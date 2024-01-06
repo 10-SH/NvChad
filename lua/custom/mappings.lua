@@ -4,11 +4,6 @@ local M = {}
 M.disabled = {
   n = {
       ["<leader>h"] = "",
-      ["<C-a>"] = "",
-      ["<C-h"] = "",
-      ["<C-l"] = "",
-      ["<C-j"] = "",
-      ["<C-k"] = "",
   }
 }
 
@@ -32,26 +27,18 @@ M.general = {
   },
 }
 
-M.comment = {
+M.nvimtree = {
   plugin = true,
 
-  -- toggle comment in both modes
   n = {
-    ["<C-/>"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "Toggle comment",
-    },
-  },
+    -- toggle
+    ["<leader>oe"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
-  v = {
-    ["<C>/"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "Toggle comment",
-    },
+    -- focus
+    ["<leader>le"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
+
 
 M.lspconfig = {
   plugin = true,
@@ -89,13 +76,6 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "LSP signature help",
-    },
-
     -- ["<leader>D"] = {
     ["<leader>tdf"] = {
       function()
@@ -112,26 +92,12 @@ M.lspconfig = {
       "LSP rename",
     },
 
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "LSP code action",
-    },
-
     -- ["gr"] = {
     ["<leader>rf"] = {
       function()
         vim.lsp.buf.references()
       end,
       "LSP references",
-    },
-
-    ["<leader>lf"] = {
-      function()
-        vim.diagnostic.open_float { border = "rounded" }
-      end,
-      "Floating diagnostic",
     },
 
     -- ["[d"] = {
@@ -150,12 +116,35 @@ M.lspconfig = {
       "Goto next",
     },
 
-    ["<leader>q"] = {
-      function()
-        vim.diagnostic.setloclist()
-      end,
-      "Diagnostic setloclist",
-    },
+    -- --
+
+    -- ["<leader>ls"] = {
+    --   function()
+    --     vim.lsp.buf.signature_help()
+    --   end,
+    --   "LSP signature help",
+    -- },
+    --
+    -- ["<leader>ca"] = {
+    --   function()
+    --     vim.lsp.buf.code_action()
+    --   end,
+    --   "LSP code action",
+    -- },
+    --
+    -- ["<leader>lf"] = {
+    --   function()
+    --     vim.diagnostic.open_float { border = "rounded" }
+    --   end,
+    --   "Floating diagnostic",
+    -- },
+    --
+    -- ["<leader>q"] = {
+    --   function()
+    --     vim.diagnostic.setloclist()
+    --   end,
+    --   "Diagnostic setloclist",
+    -- },
   },
 }
 
