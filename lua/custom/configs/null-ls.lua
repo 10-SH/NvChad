@@ -13,6 +13,12 @@ local sources = {
 
   -- cpp
   b.formatting.clang_format,
+
+  -- python
+  b.formatting.black,
+
+  -- vim
+  -- b.formatting.vimls
 }
 
 null_ls.setup {

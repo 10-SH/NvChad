@@ -37,6 +37,12 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- python
+    "pyright", -- 格式化插件：black
+
+    -- vim
+    "vim-language-server", -- lsp name vimls
   },
 }
 
