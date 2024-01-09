@@ -19,6 +19,9 @@ local sources = {
 
   -- vim
   -- b.formatting.vimls
+
+  -- bash
+  b.formatting.shfmt,
 }
 
 null_ls.setup {

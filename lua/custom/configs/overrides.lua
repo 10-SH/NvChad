@@ -43,6 +43,10 @@ M.mason = {
 
     -- vim
     "vim-language-server", -- lsp name vimls
+
+    -- bash
+    "bash-language-server",
+    "shfmt",
   },
 }
 
