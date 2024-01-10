@@ -47,6 +47,10 @@ M.mason = {
     -- bash
     "bash-language-server",
     "shfmt",
+
+    -- golang
+    "gopls",
+    "gofumt"
   },
 }
 
