@@ -3,8 +3,11 @@ local M = {}
 
 M.disabled = {
   n = {
-      ["<leader>h"] = "",
-  }
+    ["<leader>h"] = "",
+    ["<A-i>"] = "",
+    ["<A-h>"] = "",
+    ["<A-v>"] = "",
+  },
 }
 
 M.general = {
@@ -23,7 +26,7 @@ M.general = {
     ["<leader>k"] = { "<C-w>k", "Window up" },
   },
   v = {
-    [">"] = { ">gv", "indent"},
+    [">"] = { ">gv", "indent" },
   },
 }
 
@@ -38,7 +41,6 @@ M.nvimtree = {
     ["<leader>le"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
-
 
 M.lspconfig = {
   plugin = true,
@@ -145,6 +147,58 @@ M.lspconfig = {
     --   end,
     --   "Diagnostic setloclist",
     -- },
+  },
+}
+
+M.nvterm = {
+  plugin = true,
+
+  t = {
+    -- toggle in terminal mode
+    ["<A-f>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-t>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+
+    ["<A-v>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
+    },
+  },
+
+  n = {
+    -- toggle in normal mode
+    ["<A-f>"] = {
+      function()
+        require("nvterm.terminal").toggle "float"
+      end,
+      "Toggle floating term",
+    },
+
+    ["<A-t>"] = {
+      function()
+        require("nvterm.terminal").toggle "horizontal"
+      end,
+      "Toggle horizontal term",
+    },
+
+    ["<A-v>"] = {
+      function()
+        require("nvterm.terminal").toggle "vertical"
+      end,
+      "Toggle vertical term",
+    },
   },
 }
 
