@@ -200,16 +200,15 @@ M.nvterm = {
       "Toggle vertical term",
     },
 
-    -- 运行当前文件
-    ["<A-i>"] = {
+    -- Run current code file
+    ["<F5>"] = {
       function()
         local terminal = require "nvterm.terminal"
         local ft_cmds = {
           python = "python3 " .. vim.fn.expand "%",
+          c = "gcc " .. vim.fn.expand "%" .. " -o temp && ./temp",
         }
-        terminal.send(ft_cmds[vim.bo.filetype])
-        -- terminal.send(vim.bo.filetype)
-        -- terminal.send("aaaaaaaaaaaaaaaa")
+        terminal.send(ft_cmds[vim.bo.filetype], "float")
       end,
       "Run code",
     },
