@@ -199,6 +199,20 @@ M.nvterm = {
       end,
       "Toggle vertical term",
     },
+
+    -- 运行当前文件
+    ["<A-i>"] = {
+      function()
+        local terminal = require "nvterm.terminal"
+        local ft_cmds = {
+          python = "python3 " .. vim.fn.expand "%",
+        }
+        terminal.send(ft_cmds[vim.bo.filetype])
+        -- terminal.send(vim.bo.filetype)
+        -- terminal.send("aaaaaaaaaaaaaaaa")
+      end,
+      "Run code",
+    },
   },
 }
 
