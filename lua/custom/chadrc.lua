@@ -5,7 +5,7 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "ayu_light",
+  theme = "ayu_dark",
   theme_toggle = { "ayu_dark", "ayu_light" },
 
   hl_override = highlights.override,
@@ -25,7 +25,7 @@ M.ui = {
   tabufline = {
     show_numbers = false,
     enabled = true,
-    lazyload = false,
+    lazyload = true,
     overriden_modules = nil,
   },
 }
