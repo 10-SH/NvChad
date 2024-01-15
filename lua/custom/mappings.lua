@@ -207,7 +207,7 @@ M.nvterm = {
         local ft_cmds = {
           python = "python3 " .. vim.fn.expand "%",
           -- c = "gcc " .. vim.fn.expand "%" " -o " .. vim.fn.expand "%",
-          c = "gcc " .. vim.fn.expand "%" " -o temp && ./temp",
+          c = "gcc " .. vim.fn.expand "%" .. " -o temp && ./temp",
         }
         terminal.send(ft_cmds[vim.bo.filetype], "float")
       end,
