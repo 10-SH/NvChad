@@ -50,7 +50,7 @@ M.mason = {
 
     -- golang
     "gopls",
-    "gofumt"
+    "gofumpt"
   },
 }
 

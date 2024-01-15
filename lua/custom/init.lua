@@ -28,7 +28,7 @@ autocmd("VimEnter", {
   callback = function()
     local dir = vim.fn.fnamemodify(".nvim-settings", ":p")
     if vim.fn.isdirectory(dir) == 0 then
-      vim.notify("'.nvim' Directory did not exists", "WARN", { title = "Nvim" })
+      vim.notify("'.nvim-settings' Directory did not exists", "WARN", { title = "Nvim" })
     else
       local file = vim.fn.expand(dir) .. "workspace.json"
       -- if vim.fn.filereadable(file) then
