@@ -33,13 +33,15 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "prettier",
+    "vim-language-server",
 
     -- c/cpp stuff
     "clangd",
     "clang-format",
 
     -- python
-    "pyright", -- 格式化插件：black
+    "pyright",
+    "black",
 
     -- vim
     "vim-language-server", -- lsp name vimls
