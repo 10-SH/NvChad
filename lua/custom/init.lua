@@ -77,15 +77,9 @@ autocmd("VimEnter", {
       vim.notify(settingsFile .. " file did not exists", vim.log.levels.WARN, { title = "Nvim" })
       return
     end
-    local fileCotent = f:read("a")
+    local fileCotent = f:read "a"
     f:close()
     local settings = vim.json.decode(fileCotent)
-    -- print(settings.rootDirectory)
-    vim.g.workspace = settings.rootDirectory .. settings.buildDirectory
+    vim.g.workspace = settings.rootDirectory .. "/" .. settings.buildDirectory .. "/"
   end,
 })
-
--- parse json
--- local sampleJson = [[{"age":"23","testArray":{"array":[8,9,11,14,25]},"Himi":"himigame.com"}]]
--- local jsons = vim.json.decode(sampleJson)
--- print(jsons.age)
