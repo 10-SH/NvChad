@@ -203,13 +203,16 @@ M.nvterm = {
     -- Run current code file
     ["<F5>"] = {
       function()
-        local terminal = require "nvterm.terminal"
+        local currentFile = vim.fn.expand "%"
+        local buildDirectory = vim.g.workspace
+        local buildFile = buildDirectory .. vim.fn.expand "%:t:r"
         local ft_cmds = {
-          python = "python3 " .. vim.fn.expand "%",
-          -- c = "gcc " .. vim.fn.expand "%" " -o " .. vim.fn.expand "%",
-          c = "gcc " .. vim.fn.expand "%" .. " -o temp && ./temp",
+          python = "python3 " .. currentFile,
+          c = "gcc " .. currentFile .. " -o " .. buildFile .. " && " .. buildFile,
         }
-        terminal.send(ft_cmds[vim.bo.filetype], "float")
+        local terminal = require "nvterm.terminal"
+        -- terminal.send(ft_cmds[vim.bo.filetype], "float")
+        terminal.send(ft_cmds[vim.bo.filetype])
       end,
       "Run code",
     },

@@ -23,33 +23,69 @@ local autocmd = vim.api.nvim_create_autocmd
 --   end
 -- })
 
+-- autocmd("VimEnter", {
+--   pattern = { "*" },
+--   callback = function()
+--     -- Settings Directory
+--     local workspace = ".workspace"
+--     local dir = vim.fn.fnamemodify(workspace, ":p")
+--     if vim.fn.isdirectory(dir) == 0 then
+--       vim.notify(workspace .. " directory did not exists", vim.log.levels.WARN, { title = "Nvim" })
+--       return
+--     end
+--
+--     local file = vim.fn.expand(dir) .. "workspace.json"
+--     local f = io.open(file, "r")
+--     if f == nil then
+--       vim.notify(file .. " file did not exists", vim.log.levels.WARN, { title = "Nvim" })
+--       return
+--     end
+--
+--     while true do
+--       local line = f:read()
+--       if line == nil then
+--         break
+--       end
+--       -- local p = string.find(line, "build=")
+--       -- local sub = string.sub(line, 2)
+--       local buildFile = io.open(line)
+--       if buildFile == nil then
+--         vim.notify("The 'build' directory did not exists", vim.log.levels.WARN, { title = "Nvim" })
+--         return
+--       end
+--       vim.g.workspace = line
+--     end
+--   end,
+-- })
+
 autocmd("VimEnter", {
   pattern = { "*" },
   callback = function()
-    local dir = vim.fn.fnamemodify(".nvim-settings", ":p")
-    if vim.fn.isdirectory(dir) == 0 then
-      vim.notify("'.nvim-settings' Directory did not exists", "WARN", { title = "Nvim" })
-    else
-      local file = vim.fn.expand(dir) .. "workspace.json"
-      -- if vim.fn.filereadable(file) then
-      local f = io.open(file, "r")
+    local workspaceName = ".workspace"
+    local settingsFileName = "settings.json"
 
-      if f == nil then
-        return
-      end
-
-      while true do
-        local line = f:read()
-        if line == nil then
-          break
-        end
-        -- print(line)
-        local p = string.find(line, "build=")
-        print(p)
-        local sub = string.sub(line, 2)
-        -- print(sub)
-      end
-      -- end
+    -- 给出 workspaceName 的绝对路径
+    local workspaceDir = vim.fn.fnamemodify(workspaceName, ":p")
+    if vim.fn.isdirectory(workspaceDir) == 0 then
+      vim.notify(workspaceName .. " directory did not exists!", vim.log.levels.WARN, { title = "Nvim" })
+      return
     end
+
+    local settingsFile = workspaceDir .. settingsFileName
+    local f = io.open(settingsFile, "r")
+    if f == nil then
+      vim.notify(settingsFile .. " file did not exists", vim.log.levels.WARN, { title = "Nvim" })
+      return
+    end
+    local fileCotent = f:read("a")
+    f:close()
+    local settings = vim.json.decode(fileCotent)
+    -- print(settings.rootDirectory)
+    vim.g.workspace = settings.rootDirectory .. settings.buildDirectory
   end,
 })
+
+-- parse json
+-- local sampleJson = [[{"age":"23","testArray":{"array":[8,9,11,14,25]},"Himi":"himigame.com"}]]
+-- local jsons = vim.json.decode(sampleJson)
+-- print(jsons.age)
