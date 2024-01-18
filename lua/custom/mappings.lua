@@ -200,19 +200,38 @@ M.nvterm = {
       "Toggle vertical term",
     },
 
-    -- Run current code file
+    -- Run current code file. <leader>run program -> <leader>rp
     ["<F5>"] = {
       function()
+        local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+
         local currentFile = vim.fn.expand "%"
-        local buildDirectory = vim.g.workspace
-        local buildFile = buildDirectory .. vim.fn.expand "%:t:r"
+        local currentFileWithoutFileType = vim.fn.expand "%:t:r"
+
+        local buildFile = currentFileWithoutFileType -- aaa.c -> aaa
+        if vim.g.workspace then
+          local buildDirectory = vim.g.workspace
+          buildFile = buildDirectory .. currentFileWithoutFileType
+        end
+
         local ft_cmds = {
           python = "python3 " .. currentFile,
           c = "gcc " .. currentFile .. " -o " .. buildFile .. " && " .. buildFile,
+          go = "go run " .. currentFile,
         }
         local terminal = require "nvterm.terminal"
-        -- terminal.send(ft_cmds[vim.bo.filetype], "float")
-        terminal.send(ft_cmds[vim.bo.filetype])
+        terminal.send(ft_cmds[vim.bo.filetype]) -- terminal.send(ft_cmds[vim.bo.filetype], "float")
+      end,
+      "Run code",
+    },
+    -- Test current code file. <leader>run test program -> <leader>rt
+    ["<F4>"] = {
+      function()
+        local currentFile = vim.fn.expand "%"
+        local ft_cmds = {
+          go = "go test -v -run=" .. '"' .. currentFile .. '"',
+        }
+        require("nvterm.terminal").send(ft_cmds[vim.bo.filetype])
       end,
       "Run code",
     },
