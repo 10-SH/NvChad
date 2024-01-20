@@ -60,6 +60,7 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
@@ -71,6 +72,7 @@ local plugins = {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "FzfLua",
     config = function()
       -- calling `setup` is optional for customization
       require("fzf-lua").setup {}
