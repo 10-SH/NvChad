@@ -224,17 +224,6 @@ M.nvterm = {
       end,
       "Run code",
     },
-    -- Test current code file. <leader>run test program -> <leader>rt
-    ["<F4>"] = {
-      function()
-        local currentFile = vim.fn.expand "%"
-        local ft_cmds = {
-          go = "go test -v -run=" .. '"' .. currentFile .. '"',
-        }
-        require("nvterm.terminal").send(ft_cmds[vim.bo.filetype])
-      end,
-      "Run code",
-    },
   },
 }
 
