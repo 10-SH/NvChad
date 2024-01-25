@@ -24,6 +24,8 @@ M.general = {
     ["<leader>l"] = { "<C-w>l", "Window right" },
     ["<leader>j"] = { "<C-w>j", "Window down" },
     ["<leader>k"] = { "<C-w>k", "Window up" },
+    ["<leader>-"] = { "<C-o>", "Old place" },
+    ["<leader><F4>"] = { "<Esc>:q<CR>", "quit" },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -48,17 +50,19 @@ M.lspconfig = {
   n = {
     -- ["gD"] = {
     ["<leader>dl"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
+      -- function()
+      --   vim.lsp.buf.declaration()
+      -- end,
+      "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
       "LSP declaration",
     },
 
     -- ["gd"] = {
     ["<leader>df"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
+      -- function()
+      --   vim.lsp.buf.definition()
+      -- end,
+      "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
       "LSP definition",
     },
 
@@ -72,17 +76,19 @@ M.lspconfig = {
 
     -- ["gi"] = {
     ["<leader>im"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
+      -- function()
+      --   vim.lsp.buf.implementation()
+      -- end,
+      "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
       "LSP implementation",
     },
 
     -- ["<leader>D"] = {
     ["<leader>tdf"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
+      -- function()
+      --   vim.lsp.buf.type_definition()
+      -- end,
+      "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
       "LSP definition type",
     },
 
@@ -96,9 +102,10 @@ M.lspconfig = {
 
     -- ["gr"] = {
     ["<leader>rf"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
+      -- function()
+      --   vim.lsp.buf.references()
+      -- end,
+      "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
       "LSP references",
     },
 

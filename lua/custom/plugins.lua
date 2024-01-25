@@ -3,8 +3,7 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  -- Override plugin definition options
-
+  --【======1======】Override plugin definition options
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -22,23 +21,21 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
-  -- override plugin configs
+  --【======2======】override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
-
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
 
-  -- Install a plugin
+  --【======3======】Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -46,28 +43,12 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
-
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
       require("nvim-web-devicons").setup {}
     end,
   },
-
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -78,7 +59,6 @@ local plugins = {
       require("fzf-lua").setup {}
     end,
   },
-
   {
     "10-SH/nvterm-fork",
     init = function()
@@ -89,9 +69,9 @@ local plugins = {
       require("nvterm").setup(opts)
     end,
   },
-
   {
     "romgrk/nvim-treesitter-context",
+    lazy = false,
     event = { "User FileOpened" },
     config = function()
       require("treesitter-context").setup {
@@ -110,19 +90,42 @@ local plugins = {
       }
     end,
   },
-
-  -- To make a plugin not be loaded
+  {
+    "gen740/SmoothCursor.nvim",
+    lazy = false,
+    config = function()
+      require("smoothcursor").setup()
+    end,
+  },
+  {
+    "hedyhli/outline.nvim",
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
+    },
+  },
+  {
+    "rmagatti/goto-preview",
+    cmd = "GotoPreview",
+    lazy = false,
+    config = function()
+      require("goto-preview").setup()
+    end,
+  },
+  --【======4======】 To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
   {
     "NvChad/nvterm",
     enabled = false,
   },
 
-  -- All NvChad plugins are lazy-loaded by default
+  --【======5======】 All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
   -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
   -- {
