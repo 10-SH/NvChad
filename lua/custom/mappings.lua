@@ -200,11 +200,8 @@ M.nvterm = {
       "Toggle vertical term",
     },
 
-    -- Run current code file. <leader>run program -> <leader>rp
     ["<F5>"] = {
       function()
-        local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-
         local currentFile = vim.fn.expand "%"
         local currentFileWithoutFileType = vim.fn.expand "%:t:r"
 

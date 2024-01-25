@@ -80,6 +80,13 @@ autocmd("VimEnter", {
     local fileCotent = f:read "a"
     f:close()
     local settings = vim.json.decode(fileCotent)
-    vim.g.workspace = settings.rootDirectory .. "/" .. settings.buildDirectory .. "/"
+
+    local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+    if is_windows then
+      vim.g.workspace = settings.rootDirectoryWindows .. "\\" .. settings.buildDirectory .. "\\"
+    else
+      vim.g.workspace = settings.rootDirectoryLinux .. "/" .. settings.buildDirectory .. "/"
+    end
+    print(vim.g.workspace)
   end,
 })
