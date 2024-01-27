@@ -3,7 +3,7 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  --【======1======】Override plugin definition options
+  --1-- Override plugin definition options
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -21,7 +21,7 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
-  --【======2======】override plugin configs
+  --2-- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -35,7 +35,7 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  --【======3======】Install a plugin
+  --3--Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -74,29 +74,16 @@ local plugins = {
     lazy = false,
     event = { "User FileOpened" },
     config = function()
-      require("treesitter-context").setup {
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-        min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-        line_numbers = true,
-        multiline_threshold = 20, -- Maximum number of lines to show for a single context
-        trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-        mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
-        -- Separator between context and content. Should be a single character string, like '-'.
-        -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-        separator = nil,
-        zindex = 20, -- The Z-index of the context window
-        on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-      }
+      require("treesitter-context").setup {}
     end,
   },
-  {
+  --[[ {
     "gen740/SmoothCursor.nvim",
     lazy = false,
     config = function()
       require("smoothcursor").setup()
     end,
-  },
+  }, ]]
   {
     "hedyhli/outline.nvim",
     cmd = { "Outline", "OutlineOpen" },
@@ -107,15 +94,43 @@ local plugins = {
       -- Your setup opts here
     },
   },
-  {
+  --[[ {
     "rmagatti/goto-preview",
     cmd = "GotoPreview",
     lazy = false,
     config = function()
       require("goto-preview").setup()
     end,
+  }, ]]
+  --[[ {
+    "mvllow/modes.nvim",
+    lazy = false,
+    config = function()
+      require("modes").setup()
+    end,
+  }, ]]
+  -- {
+  --   "petertriho/nvim-scrollbar",
+  --   lazy = false,
+  --   config = function()
+  --     require("scrollbar").setup()
+  --   end,
+  -- },
+  {
+    "dnlhc/glance.nvim",
+    lazy = false,
+    config = function()
+      require("glance").setup {
+        border = {
+          enable = true, -- Show window borders. Only horizontal borders allowed
+          top_char = "―",
+          bottom_char = "―",
+        },
+      }
+    end,
   },
-  --【======4======】 To make a plugin not be loaded
+
+  --4-- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
@@ -125,7 +140,7 @@ local plugins = {
     enabled = false,
   },
 
-  --【======5======】 All NvChad plugins are lazy-loaded by default
+  --5-- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
   -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
   -- {

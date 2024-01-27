@@ -4,9 +4,15 @@ local M = {}
 M.disabled = {
   n = {
     ["<leader>h"] = "",
+
     ["<A-i>"] = "",
     ["<A-h>"] = "",
     ["<A-v>"] = "",
+
+    ["<C-h>"] = "",
+    ["<C-j>"] = "",
+    ["<C-k>"] = "",
+    ["<C-l>"] = "",
   },
 }
 
@@ -20,11 +26,15 @@ M.general = {
   },
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
+
     ["<leader>h"] = { "<C-w>h", "Window left" },
     ["<leader>l"] = { "<C-w>l", "Window right" },
     ["<leader>j"] = { "<C-w>j", "Window down" },
     ["<leader>k"] = { "<C-w>k", "Window up" },
-    ["<leader>-"] = { "<C-o>", "Old place" },
+
+    -- ["<leader>-"] = { "<C-o>", "Old place" },
+    -- ["<leader>+"] = { "<C-i>", "New place" },
+
     ["<leader><F4>"] = { "<Esc>:q<CR>", "quit" },
   },
   v = {
@@ -50,19 +60,19 @@ M.lspconfig = {
   n = {
     -- ["gD"] = {
     ["<leader>dl"] = {
-      -- function()
-      --   vim.lsp.buf.declaration()
-      -- end,
-      "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
+      function()
+        vim.lsp.buf.declaration()
+      end,
+      -- "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
       "LSP declaration",
     },
 
     -- ["gd"] = {
     ["<leader>df"] = {
-      -- function()
-      --   vim.lsp.buf.definition()
-      -- end,
-      "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+      function()
+        vim.lsp.buf.definition()
+      end,
+      -- "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
       "LSP definition",
     },
 
@@ -76,19 +86,19 @@ M.lspconfig = {
 
     -- ["gi"] = {
     ["<leader>im"] = {
-      -- function()
-      --   vim.lsp.buf.implementation()
-      -- end,
-      "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      -- "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
       "LSP implementation",
     },
 
     -- ["<leader>D"] = {
     ["<leader>tdf"] = {
-      -- function()
-      --   vim.lsp.buf.type_definition()
-      -- end,
-      "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      -- "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
       "LSP definition type",
     },
 
@@ -102,10 +112,10 @@ M.lspconfig = {
 
     -- ["gr"] = {
     ["<leader>rf"] = {
-      -- function()
-      --   vim.lsp.buf.references()
-      -- end,
-      "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+      function()
+        vim.lsp.buf.references()
+      end,
+      -- "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
       "LSP references",
     },
 

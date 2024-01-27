@@ -14,7 +14,7 @@ M.treesitter = {
     "markdown_inline",
     "go",
     "python",
-    "vimdoc"
+    "vimdoc",
   },
   indent = {
     enable = true,
@@ -55,7 +55,7 @@ M.mason = {
 
     -- golang
     "gopls",
-    "gofumpt"
+    "gofumpt",
   },
 }
 
@@ -74,7 +74,7 @@ M.nvimtree = {
     },
   },
   view = {
-    width = 35,
+    width = 38,
   },
 }
 
