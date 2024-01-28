@@ -63,17 +63,49 @@ M.lspconfig = {
       function()
         vim.lsp.buf.declaration()
       end,
-      -- "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
       "LSP declaration",
     },
 
     -- ["gd"] = {
     ["<leader>df"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
+      -- function()
+      --   vim.lsp.buf.definition()
+      -- end,
       -- "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+      "<CMD>Glance definitions<CR>",
       "LSP definition",
+    },
+
+    -- ["gi"] = {
+    ["<leader>im"] = {
+      -- function()
+      --   vim.lsp.buf.implementation()
+      -- end,
+      -- "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+      "<CMD>Glance implementations<CR>",
+      "LSP implementation",
+    },
+
+    -- ["<leader>D"] = {
+    ["<leader>tdf"] = {
+      -- function()
+      --   vim.lsp.buf.type_definition()
+      -- end,
+      -- "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+      "<CMD>Glance type_definitions<CR>",
+      "LSP definition type",
+    },
+
+    -- ["gr"] = {
+    ["<leader>rf"] = {
+      -- function()
+      --   vim.lsp.buf.references()
+      -- end,
+      --
+      -- "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+      --
+      "<CMD>Glance references<CR>",
+      "LSP references",
     },
 
     -- ["K"] = {
@@ -83,25 +115,6 @@ M.lspconfig = {
       end,
       "LSP hover",
     },
-
-    -- ["gi"] = {
-    ["<leader>im"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      -- "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
-      "LSP implementation",
-    },
-
-    -- ["<leader>D"] = {
-    ["<leader>tdf"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      -- "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
-      "LSP definition type",
-    },
-
     -- ["<leader>ra"] = {
     ["<leader>re"] = {
       function()
@@ -109,16 +122,6 @@ M.lspconfig = {
       end,
       "LSP rename",
     },
-
-    -- ["gr"] = {
-    ["<leader>rf"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      -- "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
-      "LSP references",
-    },
-
     -- ["[d"] = {
     ["<leader>pe"] = {
       function()
