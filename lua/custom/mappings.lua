@@ -31,10 +31,8 @@ M.general = {
     ["<leader>l"] = { "<C-w>l", "Window right" },
     ["<leader>j"] = { "<C-w>j", "Window down" },
     ["<leader>k"] = { "<C-w>k", "Window up" },
-
     -- ["<leader>-"] = { "<C-o>", "Old place" },
     -- ["<leader>+"] = { "<C-i>", "New place" },
-
     ["<leader><F4>"] = { "<Esc>:q<CR>", "quit" },
   },
   v = {
@@ -48,7 +46,6 @@ M.nvimtree = {
   n = {
     -- toggle
     ["<leader>oe"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-
     -- focus
     ["<leader>le"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
@@ -68,11 +65,10 @@ M.lspconfig = {
 
     -- ["gd"] = {
     ["<leader>df"] = {
-      -- function()
-      --   vim.lsp.buf.definition()
-      -- end,
-      -- "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
-      "<CMD>Glance definitions<CR>",
+      function()
+        vim.lsp.buf.definition()
+      end,
+      -- "<CMD>Glance definitions<CR>",
       "LSP definition",
     },
 
@@ -88,11 +84,10 @@ M.lspconfig = {
 
     -- ["<leader>D"] = {
     ["<leader>tdf"] = {
-      -- function()
-      --   vim.lsp.buf.type_definition()
-      -- end,
-      -- "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
-      "<CMD>Glance type_definitions<CR>",
+      function()
+        vim.lsp.buf.type_definition()
+      end,
+      -- "<CMD>Glance type_definitions<CR>",
       "LSP definition type",
     },
 
@@ -101,9 +96,6 @@ M.lspconfig = {
       -- function()
       --   vim.lsp.buf.references()
       -- end,
-      --
-      -- "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
-      --
       "<CMD>Glance references<CR>",
       "LSP references",
     },

@@ -77,13 +77,13 @@ local plugins = {
       require("treesitter-context").setup {}
     end,
   },
-  --[[ {
+  {
     "gen740/SmoothCursor.nvim",
     lazy = false,
     config = function()
       require("smoothcursor").setup()
     end,
-  }, ]]
+  },
   {
     "hedyhli/outline.nvim",
     cmd = { "Outline", "OutlineOpen" },
@@ -91,17 +91,11 @@ local plugins = {
       { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
     },
     opts = {
-      -- Your setup opts here
+      outline_window = {
+        width = 22,
+      },
     },
   },
-  --[[ {
-    "rmagatti/goto-preview",
-    cmd = "GotoPreview",
-    lazy = false,
-    config = function()
-      require("goto-preview").setup()
-    end,
-  }, ]]
   --[[ {
     "mvllow/modes.nvim",
     lazy = false,
@@ -109,13 +103,13 @@ local plugins = {
       require("modes").setup()
     end,
   }, ]]
-  -- {
-  --   "petertriho/nvim-scrollbar",
-  --   lazy = false,
-  --   config = function()
-  --     require("scrollbar").setup()
-  --   end,
-  -- },
+  {
+    "petertriho/nvim-scrollbar",
+    lazy = false,
+    config = function()
+      require("scrollbar").setup()
+    end,
+  },
   {
     "dnlhc/glance.nvim",
     lazy = false,
@@ -128,6 +122,42 @@ local plugins = {
         },
       }
     end,
+  },
+  {
+    "folke/trouble.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+      lsp = {
+        hover = {
+          enabled = false,
+          silent = false, -- set to true to not show a message if hover is not available
+          view = nil, -- when nil, use defaults from documentation
+          opts = {}, -- merged with defaults from documentation
+        },
+        signature = {
+          enabled = false,
+          auto_open = {
+            enabled = true,
+            trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+            luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+            throttle = 50, -- Debounce lsp signature help request by 50ms
+          },
+          view = nil, -- when nil, use defaults from documentation
+          opts = {}, -- merged with defaults from documentation
+        },
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
   },
 
   --4-- To make a plugin not be loaded
