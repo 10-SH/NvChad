@@ -129,6 +129,7 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -137,20 +138,9 @@ local plugins = {
       lsp = {
         hover = {
           enabled = false,
-          silent = false, -- set to true to not show a message if hover is not available
-          view = nil, -- when nil, use defaults from documentation
-          opts = {}, -- merged with defaults from documentation
         },
         signature = {
           enabled = false,
-          auto_open = {
-            enabled = true,
-            trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
-            luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-            throttle = 50, -- Debounce lsp signature help request by 50ms
-          },
-          view = nil, -- when nil, use defaults from documentation
-          opts = {}, -- merged with defaults from documentation
         },
       },
     },
@@ -158,6 +148,15 @@ local plugins = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+  },
+
+  {
+    "Vonr/align.nvim",
+    branch = "v2",
+    lazy = false,
+    init = function()
+      -- Create your mappings here
+    end,
   },
 
   --4-- To make a plugin not be loaded
