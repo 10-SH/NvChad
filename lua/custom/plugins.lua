@@ -110,6 +110,7 @@ local plugins = {
       require("scrollbar").setup()
     end,
   },
+
   {
     "dnlhc/glance.nvim",
     lazy = false,
@@ -156,6 +157,13 @@ local plugins = {
     lazy = false,
     init = function()
       -- Create your mappings here
+    end,
+  },
+
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require("formatter").setup {}
     end,
   },
 
