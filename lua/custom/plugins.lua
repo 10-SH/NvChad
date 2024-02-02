@@ -162,8 +162,42 @@ local plugins = {
 
   {
     "mhartington/formatter.nvim",
+    cmd = "Format",
+    -- lazy = false,
     config = function()
-      require("formatter").setup {}
+      local defaults = require "formatter.defaults"
+      -- local format_with_prettier = {"html", "markdown", "css", "json", "vue", "javascript"}
+      local filetypes = {
+        lua = {
+          require("formatter.filetypes.lua").stylua,
+        },
+        c = {
+          require("formatter.filetypes.c").clangformat,
+        },
+
+        html = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        markdown = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        css = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        json = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        vue = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        javascript = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+        typescript = {
+          require("formatter.filetypes.javascript").prettier,
+        },
+      }
+      require("formatter").setup { filetype = filetypes }
     end,
   },
 
@@ -174,6 +208,10 @@ local plugins = {
   -- },
   {
     "NvChad/nvterm",
+    enabled = false,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
     enabled = false,
   },
 
