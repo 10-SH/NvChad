@@ -110,7 +110,6 @@ local plugins = {
       require("scrollbar").setup()
     end,
   },
-
   {
     "dnlhc/glance.nvim",
     lazy = false,
@@ -130,7 +129,6 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
-
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -150,7 +148,6 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
-
   {
     "Vonr/align.nvim",
     branch = "v2",
@@ -159,45 +156,55 @@ local plugins = {
       -- Create your mappings here
     end,
   },
-
   {
     "mhartington/formatter.nvim",
     cmd = "Format",
-    -- lazy = false,
     config = function()
-      local defaults = require "formatter.defaults"
-      -- local format_with_prettier = {"html", "markdown", "css", "json", "vue", "javascript"}
-      local filetypes = {
-        lua = {
-          require("formatter.filetypes.lua").stylua,
-        },
-        c = {
-          require("formatter.filetypes.c").clangformat,
-        },
+      require("formatter").setup { filetype = require("custom.configs.formatter").filetypes }
+    end,
+  },
+  {
+    "goolord/alpha-nvim",
+    lazy = false,
+    event = "VimEnter",
+    dependendies = { "nvim-tree/nvim-web-devicons" },
+    config = function(_, opts)
+      -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
+      local status_ok, alpha = pcall(require, "alpha")
+      if not status_ok then
+        return
+      end
 
-        html = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        markdown = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        css = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        json = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        vue = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        javascript = {
-          require("formatter.filetypes.javascript").prettier,
-        },
-        typescript = {
-          require("formatter.filetypes.javascript").prettier,
-        },
+      local dashboard = require "alpha.themes.dashboard"
+
+      local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+      if is_windows then
+        config_path = ":e ~\\AppData\\Local\\nvim\\init.lua<CR>"
+      else
+        config_path = ":e ~/.config/nvim/init.lua<CR>"
+      end
+      dashboard.section.buttons.val = {
+        dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+        dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+        dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+        dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
+        dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
       }
-      require("formatter").setup { filetype = filetypes }
+
+      local function footer()
+        -- return "恐惧让人寸步难行！"
+        return "Fear makes it difficult to move forward!"
+      end
+
+      dashboard.section.footer.val = footer()
+
+      dashboard.section.footer.opts.hl = "Type"
+      dashboard.section.header.opts.hl = "Include"
+      dashboard.section.buttons.opts.hl = "Keyword"
+
+      dashboard.opts.opts.noautocmd = true
+      alpha.setup(dashboard.opts)
     end,
   },
 

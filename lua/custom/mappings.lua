@@ -33,7 +33,8 @@ M.general = {
     ["<leader>k"] = { "<C-w>k", "Window up" },
     -- ["<leader>-"] = { "<C-o>", "Old place" },
     -- ["<leader>+"] = { "<C-i>", "New place" },
-    ["<leader><F4>"] = { "<Esc>:q<CR>", "quit" },
+    ["<leader>q"] = { "<Esc>:q<CR>", "quit" },
+    ["<leader>fm"] = { "<cmd>Format<CR>", "Format" },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -121,7 +122,6 @@ M.lspconfig = {
       end,
       "Goto prev",
     },
-
     -- ["]d"] = {
     ["<leader>ne"] = {
       function()
@@ -129,7 +129,12 @@ M.lspconfig = {
       end,
       "Goto next",
     },
-
+    ["<leader>e"] = {
+      function()
+        vim.diagnostic.open_float()
+      end,
+      "Goto next",
+    },
     -- --
 
     -- ["<leader>ls"] = {
