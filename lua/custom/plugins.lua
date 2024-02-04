@@ -142,6 +142,10 @@ local plugins = {
           enabled = false,
         },
       },
+      cmdline = {
+        -- view = "cmdline_propu", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+        view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
