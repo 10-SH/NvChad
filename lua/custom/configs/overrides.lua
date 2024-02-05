@@ -64,8 +64,8 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
   renderer = {
+    group_empty = true,
     highlight_git = true,
     icons = {
       show = {
@@ -75,6 +75,10 @@ M.nvimtree = {
   },
   view = {
     width = 38,
+  },
+  filters = {
+    git_ignored = false,
+    dotfiles = true,
   },
 }
 
