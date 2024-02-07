@@ -211,6 +211,14 @@ local plugins = {
       alpha.setup(dashboard.opts)
     end,
   },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = false,
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 
   --4-- To make a plugin not be loaded
   -- {
