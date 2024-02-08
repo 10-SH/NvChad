@@ -90,3 +90,13 @@ autocmd("VimEnter", {
     print(vim.g.workspace)
   end,
 })
+
+-- 会导致 lsp 失效，不知道为什么
+-- autocmd("BufReadPost", {
+--   pattern = { "*" },
+--   callback = function()
+--     -- open the tree
+--     -- require("nvim-tree.api").tree.open()
+--     require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
+--   end,
+-- })

@@ -169,46 +169,11 @@ local plugins = {
   },
   {
     "goolord/alpha-nvim",
-    lazy = false,
     event = "VimEnter",
     dependendies = { "nvim-tree/nvim-web-devicons" },
-    config = function(_, opts)
+    config = function()
+      require("alpha").setup(overrides.alpha())
       -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
-      local status_ok, alpha = pcall(require, "alpha")
-      if not status_ok then
-        return
-      end
-
-      local dashboard = require "alpha.themes.dashboard"
-
-      local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-      if is_windows then
-        config_path = ":e ~\\AppData\\Local\\nvim\\init.lua<CR>"
-      else
-        config_path = ":e ~/.config/nvim/init.lua<CR>"
-      end
-      dashboard.section.buttons.val = {
-        dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-        dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-        dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
-        dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
-      }
-
-      local function footer()
-        -- return "恐惧让人寸步难行！"
-        return "Fear makes it difficult to move forward!"
-      end
-
-      dashboard.section.footer.val = footer()
-
-      dashboard.section.footer.opts.hl = "Type"
-      dashboard.section.header.opts.hl = "Include"
-      dashboard.section.buttons.opts.hl = "Keyword"
-
-      dashboard.opts.opts.noautocmd = true
-      alpha.setup(dashboard.opts)
     end,
   },
   {
