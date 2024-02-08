@@ -91,12 +91,12 @@ autocmd("VimEnter", {
   end,
 })
 
--- 会导致 lsp 失效，不知道为什么
--- autocmd("BufReadPost", {
+-- BufRead 会导致 lsp 失效，不知道为什么
+-- autocmd("VimEnter", {
 --   pattern = { "*" },
 --   callback = function()
 --     -- open the tree
---     -- require("nvim-tree.api").tree.open()
---     require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
+--     require("nvim-tree.api").tree.open()
+--     -- require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
 --   end,
 -- })
