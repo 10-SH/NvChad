@@ -1,4 +1,4 @@
--- local autocmd = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Auto resize panes when resizing nvim window
 -- autocmd("VimResized", {
@@ -6,8 +6,6 @@
 --   command = "tabdo wincmd =",
 -- })
 --
-
-local autocmd = vim.api.nvim_create_autocmd
 
 -- autocmd("BufRead", {
 --   pattern = { "*" },
@@ -92,11 +90,11 @@ autocmd("VimEnter", {
 })
 
 -- BufRead 会导致 lsp 失效，不知道为什么
--- autocmd("VimEnter", {
---   pattern = { "*" },
---   callback = function()
---     -- open the tree
---     require("nvim-tree.api").tree.open()
---     -- require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
---   end,
--- })
+autocmd("VimEnter", {
+  pattern = { "*" },
+  callback = function()
+    -- open the tree
+    require("nvim-tree.api").tree.open()
+    -- require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
+  end,
+})
