@@ -184,6 +184,15 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
+  -- 面包屑
+  {
+    "Bekaboo/dropbar.nvim",
+    lazy = false,
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+  },
 
   --4-- To make a plugin not be loaded
   -- {
