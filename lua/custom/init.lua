@@ -89,9 +89,8 @@ autocmd("VimEnter", {
   end,
 })
 
--- BufRead 会导致 lsp 失效，不知道为什么
+-- BufRead 会导致 lsp 失效，不知道为什么?
 autocmd("VimEnter", {
-  pattern = { "*" },
   callback = function()
     -- open the tree
     require("nvim-tree.api").tree.open()
