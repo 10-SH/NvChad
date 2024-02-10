@@ -77,13 +77,13 @@ local plugins = {
       require("treesitter-context").setup {}
     end,
   },
-  {
-    "gen740/SmoothCursor.nvim",
-    lazy = false,
-    config = function()
-      require("smoothcursor").setup()
-    end,
-  },
+  -- {
+  --   "gen740/SmoothCursor.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("smoothcursor").setup()
+  --   end,
+  -- },
   {
     "hedyhli/outline.nvim",
     cmd = { "Outline", "OutlineOpen" },
@@ -103,13 +103,13 @@ local plugins = {
       require("modes").setup()
     end,
   }, ]]
-  {
-    "petertriho/nvim-scrollbar",
-    lazy = false,
-    config = function()
-      require("scrollbar").setup()
-    end,
-  },
+  -- {
+  --   "petertriho/nvim-scrollbar",
+  --   lazy = false,
+  --   config = function()
+  --     require("scrollbar").setup()
+  --   end,
+  -- },
   {
     "dnlhc/glance.nvim",
     lazy = false,
@@ -152,14 +152,14 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
-  {
-    "Vonr/align.nvim",
-    branch = "v2",
-    lazy = false,
-    init = function()
-      -- Create your mappings here
-    end,
-  },
+  -- {
+  --   "Vonr/align.nvim",
+  --   branch = "v2",
+  --   lazy = false,
+  --   init = function()
+  --     -- Create your mappings here
+  --   end,
+  -- },
   {
     "mhartington/formatter.nvim",
     cmd = "Format",
