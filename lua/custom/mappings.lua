@@ -58,18 +58,19 @@ M.lspconfig = {
   n = {
     -- ["gD"] = {
     ["<leader>dl"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
+      -- function()
+      --   vim.lsp.buf.declaration()
+      -- end,
+      "<CMD>Glance references<CR>",
       "LSP declaration",
     },
 
     -- ["gd"] = {
     ["<leader>df"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      -- "<CMD>Glance definitions<CR>",
+      -- function()
+      --   vim.lsp.buf.definition()
+      -- end,
+      "<CMD>Glance definitions<CR>",
       "LSP definition",
     },
 
@@ -85,10 +86,10 @@ M.lspconfig = {
 
     -- ["<leader>D"] = {
     ["<leader>tdf"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      -- "<CMD>Glance type_definitions<CR>",
+      -- function()
+      --   vim.lsp.buf.type_definition()
+      -- end,
+      "<CMD>Glance type_definitions<CR>",
       "LSP definition type",
     },
 
