@@ -85,7 +85,7 @@ autocmd("VimEnter", {
     else
       vim.g.workspace = settings.rootDirectoryLinux .. "/" .. settings.buildDirectory .. "/"
     end
-    print(vim.g.workspace)
+    vim.notify(vim.g.workspace, vim.log.levels.INFO, { title = "Nvim" })
   end,
 })
 
@@ -93,7 +93,6 @@ autocmd("VimEnter", {
 autocmd("VimEnter", {
   callback = function()
     -- open the tree
-    require("nvim-tree.api").tree.open()
-    -- require("nvim-tree.api").tree.toggle { focus = false, find_file = true }
+    -- require("nvim-tree.api").tree.open()
   end,
 })

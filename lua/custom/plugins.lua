@@ -167,15 +167,15 @@ local plugins = {
       require("formatter").setup { filetype = require("custom.configs.formatter").filetypes }
     end,
   },
-  -- {
-  --   "goolord/alpha-nvim",
-  --   event = "VimEnter",
-  --   dependendies = { "nvim-tree/nvim-web-devicons" },
-  --   config = function()
-  --     require("alpha").setup(overrides.alpha())
-  --     -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
-  --   end,
-  -- },
+  {
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    dependendies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("alpha").setup(overrides.alpha())
+      -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end,
+  },
   {
     "kdheepak/lazygit.nvim",
     lazy = false,
