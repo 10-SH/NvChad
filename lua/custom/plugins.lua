@@ -194,6 +194,7 @@ local plugins = {
   --   },
   -- },
   {
+    -- session file path: c:\\Users\\V15\\AppData\\Local\\nvim-data\\sessions
     "folke/persistence.nvim",
     lazy = false,
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
