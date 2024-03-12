@@ -16,7 +16,7 @@ M.treesitter = {
     "python",
     "vimdoc",
   },
-  indent = {
+  indent = { -- 缩进
     enable = true,
     -- disable = {
     --   "python"

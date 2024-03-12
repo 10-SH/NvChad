@@ -69,14 +69,15 @@ local plugins = {
       require("nvterm").setup(opts)
     end,
   },
-  {
-    "romgrk/nvim-treesitter-context",
-    lazy = false,
-    event = { "User FileOpened" },
-    config = function()
-      require("treesitter-context").setup {}
-    end,
-  },
+  -- {
+  --   类似导航面包屑-已有其他替代
+  --   "romgrk/nvim-treesitter-context",
+  --   lazy = false,
+  --   event = { "User FileOpened" },
+  --   config = function()
+  --     require("treesitter-context").setup {}
+  --   end,
+  -- },
   -- {
   --   "gen740/SmoothCursor.nvim",
   --   lazy = false,
@@ -194,6 +195,7 @@ local plugins = {
   --   },
   -- },
   {
+    -- save session
     -- session file path: c:\\Users\\V15\\AppData\\Local\\nvim-data\\sessions
     "folke/persistence.nvim",
     lazy = false,
@@ -201,6 +203,80 @@ local plugins = {
     opts = {
       -- add any custom options here
     },
+  },
+  {
+    -- 导航面包屑
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
+  },
+  -- {
+  --    -- 展示treesitter语法树
+  --   "nvim-treesitter/playground",
+  --   lazy = false,
+  --   config = function()
+  --     require("nvim-treesitter.configs").setup {
+  --       enable = true,
+  --       disable = {},
+  --       updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+  --       persist_queries = false, -- Whether the query persists across vim sessions
+  --       keybindings = {
+  --         toggle_query_editor = "o",
+  --         toggle_hl_groups = "i",
+  --         toggle_injected_languages = "t",
+  --         toggle_anonymous_nodes = "a",
+  --         toggle_language_display = "I",
+  --         focus_language = "f",
+  --         unfocus_language = "F",
+  --         update = "R",
+  --         goto_node = "<cr>",
+  --         show_help = "?",
+  --       },
+  --     }
+  --   end,
+  -- },
+  {
+    -- 高亮 光标下变量的所有引用及其定义
+    "nvim-treesitter/nvim-treesitter-refactor",
+    lazy = false,
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        refactor = {
+          highlight_definitions = {
+            enable = true,
+            -- Set to false if you have an `updatetime` of ~100.
+            clear_on_cursor_move = true,
+          },
+          highlight_current_scope = { enable = true },
+          -- smart_rename = {
+          --   enable = true,
+          --   -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+          --   keymaps = {
+          --     smart_rename = "grr",
+          --   },
+          -- },
+          -- navigation = {
+          --   enable = true,
+          --   -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+          --   keymaps = {
+          --     goto_definition = "gnd",
+          --     list_definitions = "gnD",
+          --     list_definitions_toc = "gO",
+          --     goto_next_usage = "<a-*>",
+          --     goto_previous_usage = "<a-#>",
+          --   },
+          -- },
+        },
+      }
+    end,
   },
 
   --4-- To make a plugin not be loaded
