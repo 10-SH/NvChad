@@ -123,4 +123,58 @@ M.alpha = function()
   return dashboard.opts
 end
 
+M.refactor = function()
+  local refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = true,
+    },
+    highlight_current_scope = { enable = true },
+    -- smart_rename = {
+    --   enable = true,
+    --   -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+    --   keymaps = {
+    --     smart_rename = "grr",
+    --   },
+    -- },
+    -- navigation = {
+    --   enable = true,
+    --   -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
+    --   keymaps = {
+    --     goto_definition = "gnd",
+    --     list_definitions = "gnD",
+    --     list_definitions_toc = "gO",
+    --     goto_next_usage = "<a-*>",
+    --     goto_previous_usage = "<a-#>",
+    --   },
+    -- },
+  }
+  return refactor
+end
+
+M.noice = {
+  -- add any options here
+  lsp = {
+    hover = {
+      enabled = false,
+    },
+    signature = {
+      enabled = false,
+    },
+  },
+  cmdline = {
+    -- view = "cmdline_propu", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+    view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+  },
+}
+
+M.glance = {
+  border = {
+    enable = true, -- Show window borders. Only horizontal borders allowed
+    top_char = "―",
+    bottom_char = "―",
+  },
+}
+
 return M

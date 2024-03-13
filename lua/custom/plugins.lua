@@ -26,10 +26,12 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
+
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
@@ -43,12 +45,14 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
+
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
       require("nvim-web-devicons").setup {}
     end,
   },
+
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -59,6 +63,7 @@ local plugins = {
       require("fzf-lua").setup {}
     end,
   },
+
   {
     "10-SH/nvterm-fork",
     init = function()
@@ -69,6 +74,7 @@ local plugins = {
       require("nvterm").setup(opts)
     end,
   },
+
   -- {
   --   类似导航面包屑-已有其他替代
   --   "romgrk/nvim-treesitter-context",
@@ -85,6 +91,7 @@ local plugins = {
   --     require("smoothcursor").setup()
   --   end,
   -- },
+
   {
     "hedyhli/outline.nvim",
     cmd = { "Outline", "OutlineOpen" },
@@ -97,6 +104,7 @@ local plugins = {
       },
     },
   },
+
   --[[ {
     "mvllow/modes.nvim",
     lazy = false,
@@ -104,6 +112,7 @@ local plugins = {
       require("modes").setup()
     end,
   }, ]]
+
   -- {
   --   "petertriho/nvim-scrollbar",
   --   lazy = false,
@@ -111,48 +120,32 @@ local plugins = {
   --     require("scrollbar").setup()
   --   end,
   -- },
+
   {
     "dnlhc/glance.nvim",
     lazy = false,
     config = function()
-      require("glance").setup {
-        border = {
-          enable = true, -- Show window borders. Only horizontal borders allowed
-          top_char = "―",
-          bottom_char = "―",
-        },
-      }
+      require("glance").setup { overrides.glance }
     end,
   },
+
   {
     "folke/trouble.nvim",
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-      lsp = {
-        hover = {
-          enabled = false,
-        },
-        signature = {
-          enabled = false,
-        },
-      },
-      cmdline = {
-        -- view = "cmdline_propu", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-        view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-      },
-    },
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+    opts = overrides.noice,
   },
+
   -- {
   --   "Vonr/align.nvim",
   --   branch = "v2",
@@ -161,6 +154,7 @@ local plugins = {
   --     -- Create your mappings here
   --   end,
   -- },
+
   {
     "mhartington/formatter.nvim",
     cmd = "Format",
@@ -168,6 +162,7 @@ local plugins = {
       require("formatter").setup { filetype = require("custom.configs.formatter").filetypes }
     end,
   },
+
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -177,6 +172,7 @@ local plugins = {
       -- require 'alpha'.setup(require 'alpha.themes.startify'.config)
     end,
   },
+
   {
     "kdheepak/lazygit.nvim",
     lazy = false,
@@ -185,18 +181,19 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
-  -- 面包屑 : 需要 > 0.10 , 先注销掉，不然打开neovim之后会又问题
-  -- {
-  --   "Bekaboo/dropbar.nvim",
-  --   lazy = false,
-  --   -- optional, but required for fuzzy finder support
-  --   dependencies = {
-  --     "nvim-telescope/telescope-fzf-native.nvim",
-  --   },
-  -- },
+
+  --[[ {
+    -- 面包屑 : 需要 > 0.10 , 先注销掉，不然打开neovim之后会有问题
+    "Bekaboo/dropbar.nvim",
+    lazy = false,
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
+  }, ]]
+
   {
-    -- save session
-    -- session file path: c:\\Users\\V15\\AppData\\Local\\nvim-data\\sessions
+    -- 自动保存 session , alpha 界面使用 s 恢复保存的 session。session 文件保存地址 c:\\Users\\V15\\AppData\\Local\\nvim-data\\sessions
     "folke/persistence.nvim",
     lazy = false,
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
@@ -204,6 +201,7 @@ local plugins = {
       -- add any custom options here
     },
   },
+
   {
     -- 导航面包屑
     "utilyre/barbecue.nvim",
@@ -214,72 +212,19 @@ local plugins = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
-    opts = {
-      -- configurations go here
-    },
+    opts = {},
   },
-  -- {
-  --    -- 展示treesitter语法树
-  --   "nvim-treesitter/playground",
-  --   lazy = false,
-  --   config = function()
-  --     require("nvim-treesitter.configs").setup {
-  --       enable = true,
-  --       disable = {},
-  --       updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-  --       persist_queries = false, -- Whether the query persists across vim sessions
-  --       keybindings = {
-  --         toggle_query_editor = "o",
-  --         toggle_hl_groups = "i",
-  --         toggle_injected_languages = "t",
-  --         toggle_anonymous_nodes = "a",
-  --         toggle_language_display = "I",
-  --         focus_language = "f",
-  --         unfocus_language = "F",
-  --         update = "R",
-  --         goto_node = "<cr>",
-  --         show_help = "?",
-  --       },
-  --     }
-  --   end,
-  -- },
+
   {
-    -- 高亮 光标下变量的所有引用及其定义
+    -- 高亮光标下变量的定义及其所有引用
     "nvim-treesitter/nvim-treesitter-refactor",
     lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup {
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            -- Set to false if you have an `updatetime` of ~100.
-            clear_on_cursor_move = true,
-          },
-          highlight_current_scope = { enable = true },
-          -- smart_rename = {
-          --   enable = true,
-          --   -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
-          --   keymaps = {
-          --     smart_rename = "grr",
-          --   },
-          -- },
-          -- navigation = {
-          --   enable = true,
-          --   -- Assign keymaps to false to disable them, e.g. `goto_definition = false`.
-          --   keymaps = {
-          --     goto_definition = "gnd",
-          --     list_definitions = "gnD",
-          --     list_definitions_toc = "gO",
-          --     goto_next_usage = "<a-*>",
-          --     goto_previous_usage = "<a-#>",
-          --   },
-          -- },
-        },
-      }
+      require("nvim-treesitter.configs").setup(overrides.refactor())
     end,
   },
 
-  --4-- To make a plugin not be loaded
+  -- ===设置某个插件不加载=== === === === ===
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
