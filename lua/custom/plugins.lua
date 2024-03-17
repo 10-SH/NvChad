@@ -231,13 +231,23 @@ local plugins = {
       require("wrapping").setup()
     end,
   },
-
   {
-    -- 只显示当前方法 command: Twilight 
-    "folke/twilight.nvim",
+    "windwp/nvim-ts-autotag",
     lazy = false,
-    opts = {},
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        autotag = {
+          enable = true,
+        },
+      }
+    end,
   },
+  -- {
+  --   -- 只显示当前方法 command: Twilight
+  --   "folke/twilight.nvim",
+  --   lazy = false,
+  --   opts = {},
+  -- },
 
   -- ===设置某个插件不加载=== === === === ===
   -- {
