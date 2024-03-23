@@ -125,7 +125,7 @@ local plugins = {
     "dnlhc/glance.nvim",
     lazy = false,
     config = function()
-      require("glance").setup { overrides.glance }
+      require("glance").setup(overrides.glance)
     end,
   },
 
