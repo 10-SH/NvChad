@@ -25,7 +25,7 @@ M.general = {
     -- navigate within insert mode
   },
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
 
     ["<leader>h"] = { "<C-w>h", "Window left" },
     ["<leader>l"] = { "<C-w>l", "Window right" },

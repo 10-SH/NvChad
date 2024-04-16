@@ -29,4 +29,22 @@ else
   dofile(vim.g.base46_cache .. "defaults")
   vim.opt.rtp:prepend(lazypath)
   require "plugins"
+
+  if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+    -- vim.o.guifont = "Source Code Pro:h11"
+    -- vim.o.guifont = "Inconsolata:h13"
+    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
+    vim.opt.linespace = 0
+
+    vim.g.neovide_padding_top = 0
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 0
+    vim.g.neovide_padding_left = 0
+
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 10
+    vim.g.neovide_light_angle_degrees = 45
+    vim.g.neovide_light_radius = 5
+  end
 end
