@@ -3,7 +3,8 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
 
-  --1-- Override plugin definition options
+  --【1】 ********************************************************************************************************
+  --Override plugin definition options
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -21,7 +22,8 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
-  --2-- override plugin configs
+  --【2】 ********************************************************************************************************
+  --override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -37,7 +39,8 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  --3--Install a plugin
+  --【3】 ********************************************************************************************************
+  --Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -84,13 +87,14 @@ local plugins = {
   --     require("treesitter-context").setup {}
   --   end,
   -- },
-  -- {
-  --   "gen740/SmoothCursor.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("smoothcursor").setup()
-  --   end,
-  -- },
+
+  {
+    "gen740/SmoothCursor.nvim",
+    lazy = false,
+    config = function()
+      require("smoothcursor").setup()
+    end,
+  },
 
   {
     "hedyhli/outline.nvim",
@@ -146,15 +150,6 @@ local plugins = {
     opts = overrides.noice,
   },
 
-  -- {
-  --   "Vonr/align.nvim",
-  --   branch = "v2",
-  --   lazy = false,
-  --   init = function()
-  --     -- Create your mappings here
-  --   end,
-  -- },
-
   {
     "mhartington/formatter.nvim",
     cmd = "Format",
@@ -181,16 +176,6 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
-
-  --[[ {
-    -- 面包屑 : 需要 > 0.10 , 先注销掉，不然打开neovim之后会有问题
-    "Bekaboo/dropbar.nvim",
-    lazy = false,
-    -- optional, but required for fuzzy finder support
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
-  }, ]]
 
   {
     -- 自动保存 session , alpha 界面使用 s 恢复保存的 session。session 文件保存地址 c:\\Users\\V15\\AppData\\Local\\nvim-data\\sessions
@@ -231,6 +216,7 @@ local plugins = {
       require("wrapping").setup()
     end,
   },
+
   {
     "windwp/nvim-ts-autotag",
     lazy = false,
@@ -263,7 +249,24 @@ local plugins = {
     enabled = false,
   },
 
-  --5-- All NvChad plugins are lazy-loaded by default
+  -- 这个插件没有配置好，暂时不用
+  {
+    "romgrk/barbar.nvim",
+    enabled = false,
+    lazy = true,
+    dependencies = {
+      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = overrides.barbar,
+    version = "^1.0.0", -- optional: only update when a new 1.x version is released
+  },
+
+  --4 ********************************************************************************************************
+  -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
   -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
   -- {
