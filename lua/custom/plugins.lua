@@ -36,6 +36,7 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
+    enabled = false,
     opts = overrides.nvimtree,
   },
 
@@ -76,6 +77,11 @@ local plugins = {
       require "base46.term"
       require("nvterm").setup(opts)
     end,
+  },
+
+  {
+    "NvChad/nvterm",
+    enabled = false,
   },
 
   -- {
@@ -228,6 +234,7 @@ local plugins = {
       }
     end,
   },
+
   -- {
   --   -- 只显示当前方法 command: Twilight
   --   "folke/twilight.nvim",
@@ -235,18 +242,21 @@ local plugins = {
   --   opts = {},
   -- },
 
-  -- ===设置某个插件不加载=== === === === ===
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-  {
-    "NvChad/nvterm",
-    enabled = false,
-  },
   {
     "jose-elias-alvarez/null-ls.nvim",
     enabled = false,
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
   },
 
   -- 这个插件没有配置好，暂时不用
@@ -274,5 +284,13 @@ local plugins = {
   --   lazy = false,
   -- }
 }
+
+--5 ********************************************************************************************************
+-- 示例
+-- ===设置某个插件不加载=== === === === ===
+-- {
+--   "NvChad/nvim-colorizer.lua",
+--   enabled = false
+-- },
 
 return plugins
