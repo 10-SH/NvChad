@@ -36,7 +36,6 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = false,
     opts = overrides.nvimtree,
   },
 
@@ -251,6 +250,7 @@ local plugins = {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = false,
     branch = "v3.x",
+    opts = overrides.neotree,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -259,20 +259,13 @@ local plugins = {
     },
   },
 
-  -- 这个插件没有配置好，暂时不用
   {
-    "romgrk/barbar.nvim",
+    "akinsho/bufferline.nvim",
     enabled = false,
-    lazy = true,
-    dependencies = {
-      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
-    },
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
-    opts = overrides.barbar,
-    version = "^1.0.0", -- optional: only update when a new 1.x version is released
+    lazy = false,
+    version = "*",
+    opts = overrides.bufferline,
+    dependencies = "nvim-tree/nvim-web-devicons",
   },
 
   --4 ********************************************************************************************************
