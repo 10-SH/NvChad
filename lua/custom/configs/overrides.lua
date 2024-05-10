@@ -62,17 +62,29 @@ M.mason = {
 M.nvimtree = {
   filters = {
     enable = true,
-    dotfiles = false,
     git_ignored = false,
   },
   view = {
     width = 40,
   },
+  git = {
+    enable = true,
+    ignore = false,
+  },
   renderer = {
-    root_folder_label = false,
+    root_folder_label = true,
+    full_name = true,
+    highlight_git = true,
+    highlight_opened_files = "none",
+    icons = {
+      show = {
+        git = true,
+      },
+    }
   },
   diagnostics = {
-    enable = false,
+    enable = true,
+    show_on_dirs = true,
   },
 }
 
