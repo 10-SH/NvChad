@@ -15,7 +15,7 @@ M.override = {
 M.add = {
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
   -- 高亮当前行
-  -- CursorLine = { bg = "line" },
+  CursorLine = { bg = "line" },
 }
 
 return M

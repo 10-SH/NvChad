@@ -46,11 +46,43 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<leader>oe"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    -- ["<leader>oe"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     -- focus
-    ["<leader>le"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    -- ["<leader>le"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
+
+M.neotree = {
+  plugin = true,
+
+  n = {
+    -- toggle
+    ["<leader>oe"] = { "<cmd> Neotree <CR>", "Toggle Neotree" },
+    -- focus
+    ["<leader>le"] = { "<cmd> Neotree reveal <CR>", "Focus Neotree" },
+  },
+}
+
+--[[ M.comment = {
+  plugin = true,
+
+  -- toggle comment in both modes
+  n = {
+    ["<c-/>"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "Toggle comment",
+    },
+  },
+
+  v = {
+    ["<c-/>"] = {
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "Toggle comment",
+    },
+  },
+} ]]
 
 M.lspconfig = {
   plugin = true,

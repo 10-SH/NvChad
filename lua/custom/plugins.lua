@@ -248,6 +248,10 @@ local plugins = {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    cmd = { "", "" },
+    init = function()
+      require("core.utils").load_mappings "neotree"
+    end,
     lazy = false,
     branch = "v3.x",
     opts = overrides.neotree,
