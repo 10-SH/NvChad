@@ -152,7 +152,8 @@ M.refactor = function()
         -- Set to false if you have an `updatetime` of ~100.
         clear_on_cursor_move = true,
       },
-      highlight_current_scope = { enable = true },
+      -- 会高亮整个方法体
+      highlight_current_scope = { enable = false },
       -- smart_rename = {
       --   enable = true,
       --   -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
