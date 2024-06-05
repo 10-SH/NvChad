@@ -272,6 +272,18 @@ local plugins = {
     dependencies = "nvim-tree/nvim-web-devicons",
   },
 
+  {
+    -- 和vscode一样的窗口布局,不太好用
+    "folke/edgy.nvim",
+    enabled = false,
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    event = "VeryLazy",
+    opts = overrides.edgy,
+  },
+
   --4 ********************************************************************************************************
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
