@@ -117,13 +117,13 @@ M.alpha = function()
     config_path = ":e ~/.config/nvim/init.lua<CR>"
   end
   dashboard.section.buttons.val = {
-    dashboard.button("t", "  File browser", ":NvimTreeToggle <CR>"),
-    dashboard.button("o", "  File browser(Neotree)", ":Neotree <CR>"),
+    -- dashboard.button("t", "  File browser", ":NvimTreeToggle <CR>"),
+    dashboard.button("o", "  File browser", ":Neotree <CR>"),
     dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
     dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
     dashboard.button("w", "󰈬  Find text", ":Telescope live_grep <CR>"),
     dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-    dashboard.button("s", " " .. "Restore Session", ':lua require("persistence").load() <cr>'),
+    dashboard.button("s", "  " .. "Restore Session", ':lua require("persistence").load() <cr>'),
     dashboard.button("q", "󰅚  Quit Neovim", ":qa<CR>"),
     -- dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
   }
