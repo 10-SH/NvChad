@@ -32,10 +32,12 @@ else
 
   if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
-    -- vim.o.guifont = "Source Code Pro:h11"
-    -- vim.o.guifont = "Inconsolata:h13"
-    vim.o.guifont = "JetBrainsMono Nerd Font:h11"
-    vim.opt.linespace = 0
+    -- vim.o.guifont = "Source Code Pro:h10"
+    vim.o.guifont = "RobotoMono Nerd Font:h10"
+    -- vim.o.guifont = "Inconsolata:h10"
+    -- vim.o.guifont = "JetBrainsMono Nerd Font:h10"
+    vim.opt.linespace = 1
+    vim.g.neovide_scale_factor = 1.0
 
     vim.g.neovide_padding_top = 0
     vim.g.neovide_padding_bottom = 0
