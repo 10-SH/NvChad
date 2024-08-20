@@ -103,19 +103,20 @@ M.neotree = {
 }
 
 M.alpha = function()
-  local status_ok, alpha = pcall(require, "alpha")
+  local status_ok, _ = pcall(require, "alpha")
   if not status_ok then
     return
   end
 
   local dashboard = require "alpha.themes.dashboard"
 
-  local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-  if is_windows then
-    config_path = ":e ~\\AppData\\Local\\nvim\\init.lua<CR>"
-  else
-    config_path = ":e ~/.config/nvim/init.lua<CR>"
-  end
+  -- local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+  -- if is_windows then
+  --   config_path = ":e ~\\AppData\\Local\\nvim\\init.lua<CR>"
+  -- else
+  --   config_path = ":e ~/.config/nvim/init.lua<CR>"
+  -- end
+
   dashboard.section.buttons.val = {
     -- dashboard.button("t", "  File browser", ":NvimTreeToggle <CR>"),
     dashboard.button("o", "  File browser", ":Neotree <CR>"),
@@ -128,11 +129,23 @@ M.alpha = function()
     -- dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
   }
 
-  local function footer()
-    -- return "恐惧让人寸步难行！"
-    return "Fear makes it difficult to move forward!"
+  local function header()
+    local val = {
+      [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+      [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+      [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+      [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+      [[██   ████ ███████  ██████    ████   ██ ██      ██]],
+    }
+    return val
   end
 
+  dashboard.section.header.val = header()
+
+  local function footer()
+    return "恐惧让人寸步难行！"
+    -- return "Fear makes it difficult to move forward!"
+  end
   dashboard.section.footer.val = footer()
 
   dashboard.section.footer.opts.hl = "Type"
@@ -215,7 +228,8 @@ M.bufferline = {
   options = {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = true,
-    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+    -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+    diagnostics_indicator = function(count, level, _, _)
       -- return "(" .. count .. ")"
       local icon = level:match "error" and " " or ""
       return " " .. icon .. count
